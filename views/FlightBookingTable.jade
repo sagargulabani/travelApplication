@@ -1,0 +1,22 @@
+table
+	tr(style = 'text-align:center')
+		th Unique Id
+		th Dep Date
+		th Dep Time
+		th Arrival Date
+		th Arrival Time
+		th Price
+		th Passenger Count
+		th travelClass
+		
+	for data in flightBookings
+		tr
+			td #{data.id}
+			td #{data.depdate}
+			td #{data.deptime}
+			td #{data.arrdate}
+			td #{data.arrtime}
+			td #{data.price}
+			td #{data.passCount}
+			td #{data.travelClass}
+			

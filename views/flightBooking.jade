@@ -1,0 +1,95 @@
+div(id = 'flights' class = 'tab-pane fade in active')
+	form(class = 'form-inline' method = 'GET' action = '/search')
+		br
+		div(class = 'container')
+		
+
+			div(class = 'row text-center')
+				p(id = 'title') Book Domestic and International Flight Tickets
+				
+				br
+				
+			div(class = 'row')
+				div(class = 'form-group col-sm-6')
+					label(for = 'tagDep')
+						Email
+					input(type="text",  id = "tagDep", class = "form-control ui-autocomplete-input" autocomplete = "off", name = "depcity" style = 'width:100%' placeholder = 'Departure city')
+					
+					
+					
+				div(class = 'form-group col-sm-6')
+					label(for = 'tagArr')
+						Arrival
+					input(type="text",  id = "tagArr", class = "form-control ui-autocomplete-input" autocomplete = "off", name = "arrcity" style = 'width:100%' placeholder = 'Arrival city')
+					
+					
+			br
+			br
+			
+			div(class = 'row text-center')
+				div(class = 'form-group')
+					div(class = 'btn-group' data-toggle = 'buttons')
+						label(class = 'btn btn-default' id = 'oneWay')
+							input(type = 'radio' name = 'tripOneRound' value = 'oneWay' id = 'oneWayInput') 
+							| OneWay
+						label(class = 'btn btn-danger active' id = 'roundTrip')
+							input(type = 'radio' name = 'tripOneRound' value = 'roundTrip' checked = ' ' id = 'roundTripInput') 
+							| roundTrip
+
+					
+			br
+			br
+			
+			div(class = 'row' id = 'dateRowFlights')
+				div(class = 'form-group col-sm-6 datediv' id = 'depDate')
+					.input-group.date
+						input.form-control(type='text' name = 'depdate')
+						span.input-group-addon
+							i.glyphicon.glyphicon-th
+							
+				div(class = 'form-group col-sm-6 datediv' id = 'retDate')
+					.input-group.date
+						input.form-control(type='text' name = 'retdate')
+						span.input-group-addon
+							i.glyphicon.glyphicon-th
+			br
+			br
+			
+			div(class = 'row text-center' id = 'travelClass')
+				div(class = 'form-group')
+					div(class = 'btn-group' data-toggle = 'buttons')
+						label(class = 'btn btn-danger active col-xs-12 col-lg-4' id = 'firstClass')
+							input(type = 'radio' name = 'travelClass' id = 'firstClassInput' value = 'firstClass' checked)
+							| First Class
+						label(class = 'btn btn-default col-xs-12 col-lg-4' id = 'business')
+							input(type = 'radio' id = 'businessInput' value = 'business' name = 'travelClass')
+							| Business
+						label(class = 'btn btn-default col-xs-12 col-lg-4' id = 'economy')
+							input(type = 'radio' name = 'travelClass' value = 'economy' id = 'economyInput')
+							| Economy
+			
+			br
+			br
+			div(class = 'row text-center' id = 'passCount')
+			
+				div(class = 'form-group')
+					p Adults:
+					.input-group(style = 'width:100px; margin:auto;')
+						.input-group-btn
+							button.btn.btn-default(type='button', tabindex='-1' id = 'decrementPass') -
+						input.form-control(type='number' id = 'adult' value = '1')
+						
+						.input-group-btn
+							button.btn.btn-default(type='button', tabindex='-1' id = 'incrementPass') +
+
+			
+			br
+			br
+			
+			div(class = 'row text-center' id = 'submit')
+				input(type = 'text' name = 'search' value = 'flights' hidden)
+				button(class = 'btn-primary btn-lg' type = 'submit' name = 'submit')
+					| Search Flights
+					
+			br
+			br

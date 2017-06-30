@@ -1,0 +1,152 @@
+doctype html
+html
+	head
+		title= title
+		link(rel='stylesheet', href='/stylesheets/style.css')
+		<link rel="stylesheet" href="/bootstrap/css/bootstrap.min.css" type="text/css" media="screen">
+		<script src="/javascripts/jquery.min.js"></script>
+		<script src="/bootstrap/js/bootstrap.min.js" type="text/javascript" charset="utf-8"></script>
+		<link href="/javascripts/jqueryui/jquery-ui.css" rel="stylesheet">
+		<script src="/javascripts/jqueryui/jquery-1.10.2.js"></script>
+		<script src="/javascripts/jqueryui/jquery-ui.js"></script>
+		script(src = '/javascripts/angular.min.js')
+		script(src = '/javascripts/controller.js')
+		
+		block scripts
+	body(ng-app = 'myApp' )
+		nav(class='navbar navbar-default navbar-fixed-top')
+			div(class = 'container')
+				div(class = 'navbar-header')
+					a(class = 'navbar-brand' href = '/')
+						| Sagar Travels
+					button(type = 'button', class = 'navbar-toggle' , data-toggle = 'collapse' , data-target = '#myNavbar')
+						span(class = 'icon-bar')
+						span(class = 'icon-bar')
+						span(class = 'icon-bar')
+					a(class = 'navbar-brand' href = '#myPage') 
+						Logo
+				div(class = 'collapse navbar-collapse' id = 'myNavbar')
+				
+					- if(user){
+					ul(class = 'nav navbar-nav navbar-right')
+						li
+							a(href = '/booking')
+								| Bookings
+						li
+							a(href = '/logout')
+								| Logout
+					- }
+					- else{
+					ul(class = 'nav navbar-nav navbar-right')
+						li 
+							a(data-toggle = 'modal' data-target = '#signUpModal')
+								span(class = 'glyphicon glyphicon-user')
+								| &nbsp Sign Up
+							
+							
+							
+						li 
+							a(data-toggle = 'modal' data-target = '#loginModal')
+								span(class = 'glyphicon glyphicon-log-in')
+								| &nbsp Login
+					- }
+						
+		br
+		
+		.container
+			div(id = 'signUpModal' class = 'modal fade' role = 'dialog' ng-controller = 'signupControl')
+				div(class = 'modal-dialog modal-lg')
+					form(name = 'signupForm' novalidate method = 'POST' action = '/signup')
+						div(class = 'modal-content')
+							div(class = 'modal-header')
+								button(type = 'button' class = 'close' data-dismiss = 'modal') &times
+						
+							div(class = 'modal-body')
+									.form-group
+										label(for='firstName') First Name:
+										input#firstName.form-control(name = 'firstName' type='email' ng-model = 'firstName' required)
+										
+											
+											
+										span( style = 'color:red' ng-show = 'signupForm.firstName.$dirty && signupForm.firstName.$invalid')
+											span(ng-show = 'signupForm.firstName.$error.required')
+												| First Name is required
+									
+									.form-group
+										label(for='lastName') Last Name:
+										input#lastName.form-control(name = 'lastName' type='email' ng-model = 'lastName')
+
+										span( style = 'color:red' ng-show = 'signupForm.lastName.$dirty && signupForm.lastName.$invalid')
+											span(ng-show = 'signupForm.lastName.$error.required')
+													| Last Name is required
+													
+									.form-group
+										label(for='mobileNo') Mobile Number:
+										input#mobileNo.form-control(name = 'mobileNo' type='email' ng-model = 'mobileNo' required)
+										span( style = 'color:red' ng-show = 'signupForm.mobileNo.$dirty && signupForm.mobileNo.$invalid')
+											span(ng-show = 'signupForm.mobileNo.$error.required')
+												| Mobile Number is required
+												
+										
+									.form-group
+										label(for='email') Email address:
+										input#email.form-control(name = 'emailAddress' type='email' ng-model = 'emailAddress' required)
+										span( style = 'color:red' ng-show = 'signupForm.emailAddress.$dirty && signupForm.emailAddress.$invalid')
+											span(ng-show = 'signupForm.emailAddress.$error.email')
+												| Not a valid email address
+												
+									
+													
+													
+									.form-group
+										label(for='pwd') Password:
+										input#pwd.form-control(name = 'password' type='password' ng-model = 'pwd' required)
+												
+										span( style = 'color:red' ng-show = 'signupForm.password.$dirty && signupForm.password.$invalid')
+											span(ng-show = 'signupForm.password.$error.required')
+												| Password required
+									.form-group
+										label(for='repPwd') Confirm Password:
+										input#repPwd.form-control(name = 'confirmPwd' type='password' ng-model = 'repPwd' required pw-check = 'pwd')
+										
+										span( style = 'color:red' ng-show = 'signupForm.confirmPwd.$dirty && signupForm.confirmPwd.$invalid')
+											span(ng-show = 'signupForm.confirmPwd.$error.required')
+												| Password required
+										
+											span(ng-show = 'signupForm.confirmPwd.$error.pwmatch && !signupForm.confirmPwd.$error.required')
+												| Passwords do not match
+										
+									
+							
+							div(class = 'modal-footer')
+									button.btn.btn-default(name = 'signup' type='submit' ng-disabled = 'signupForm.password.$dirty && signupForm.password.$invalid || signupForm.password.$untouched ||  signupForm.confirmPwd.$dirty && signupForm.confirmPwd.$invalid || signupForm.confirmPwd.$untouched || signupForm.emailAddress.$dirty && signupForm.emailAddress.$invalid || signupForm.emailAddress.$untouched || signupForm.mobileNo.$error.required || signupForm.firstName.$error.required || signupForm.lastName.$error.required || signupForm.confirmPwd.$error.pwmatch || signupForm.emailAddress.$error.email ') Submit
+									
+									
+									
+			
+		.container
+			div(id = 'loginModal' class = 'modal fade' role = 'dialog' ng-controller = 'loginControl')
+				div(class = 'modal-dialog modal-lg')
+					form(method = 'POST' action = '/login')
+						div(class = 'modal-content')
+							div(class = 'modal-header')
+								button(type = 'button' class = 'close' data-dismiss = 'modal') &times
+						
+							div(class = 'modal-body')
+									.form-group
+										label(for='email') Email address:
+										input#email.form-control(name = 'emailAddress' type='email')
+									.form-group
+										label(for='pwd') Password:
+										input#pwd.form-control(name = 'password' type='password')
+									.checkbox
+										label
+											input(type='checkbox')
+											|  Remember me
+							
+							div(class = 'modal-footer')
+									button.btn.btn-default(name = 'login' type='submit') Submit
+		
+		
+		block content
+		

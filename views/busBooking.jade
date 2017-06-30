@@ -1,0 +1,88 @@
+div(id = 'buses' class = 'tab-pane fade')
+	
+	form(class = 'form-inline' method = 'GET' action = '/search')
+		br
+		br
+		br
+		div(class = 'container')
+
+
+			div(class = 'row text-center')
+				p(id = 'title') Book Buses to Places all Over the Country
+		
+				br
+		
+			div(class = 'row')
+				div(class = 'form-group col-sm-6')
+					label(for = 'tagDep')
+						Email
+					input(type="text",  id = "tagDep", class = "form-control ui-autocomplete-input" autocomplete = "off", name = "depcity" style = 'width:100%' placeholder = 'Departure city')
+			
+			
+			
+				div(class = 'form-group col-sm-6')
+					label(for = 'tagArr')
+						Arrival
+					input(type="text",  id = "tagArr", class = "form-control ui-autocomplete-input" autocomplete = "off", name = "arrcity" style = 'width:100%' placeholder = 'Arrival city')
+			
+			
+			br
+			br
+	
+			
+	
+			div(class = 'row' id = 'dateRowBus')
+				
+				div(class = 'form-group col-sm-12 datediv' id = 'depDate')
+					.input-group.date
+						input.form-control(type='text' name = 'depdate')
+						span.input-group-addon
+							i.glyphicon.glyphicon-th
+					
+			
+			br
+			br
+	
+			div(class = 'row text-center' id = 'travelClass')
+				div(class = 'form-group')
+					div(class = 'btn-group' data-toggle = 'buttons')
+						label(class = 'btn btn-danger active col-xs-12 ' id = 'seater')
+							input(type = 'radio' name = 'travelClass' value = 'seater' checked)
+							| Seater
+						label(class = 'btn btn-default col-xs-12' id = 'sleeper')
+							input(type = 'radio' name = 'travelClass' value = 'sleeper')
+							| Sleeper
+	
+			br
+			br
+			div(class = 'row text-center' id = 'passCount')
+	
+				div(class = 'form-group')
+					p Adults:
+					.input-group(style = 'width:100px; margin:auto;')
+						.input-group-btn
+							button.btn.btn-default(type='button', tabindex='-1' id = 'decrementPass') -
+						input.form-control(type='number' id = 'adult' value = '1')
+				
+						.input-group-btn
+							button.btn.btn-default(type='button', tabindex='-1' id = 'incrementPass') +
+
+	
+			br
+			br
+	
+			div(class = 'row text-center' id = 'submit')
+				input(type = 'text' name = 'tripOneRound' value = 'oneWay' hidden)
+				input(type = 'text' name = 'search' value = 'buses' hidden)
+				button(class = 'btn-primary btn-lg' type = 'submit' name = 'submit' )
+					| Search Buses
+			
+			br
+			br
+	
+br
+br
+br
+br
+br
+br

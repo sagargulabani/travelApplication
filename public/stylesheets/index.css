@@ -1,0 +1,77 @@
+#selection{
+	background-repeat : no-repeat;
+	background-size: 100%;
+	padding-left:0px;
+	padding-right:0px;
+	height:600px;
+}
+
+#flights{
+	background-image:url(/images/flightsbg.jpg);
+	background-repeat : no-repeat;
+	background-size: auto;
+}
+
+#trains{
+	background-image:url(/images/trainsbg.jpg);
+	background-repeat : no-repeat;
+	background-size:1300px 750px;
+}
+
+#buses{
+	background-image:url(/images/busesbg.jpg);
+	background-repeat : no-repeat;
+	background-size:1300px 750px;
+}
+
+#title{
+	font-style:bold;
+	font-size:30px;
+	color:white;
+}
+
+input[type = text]{
+	margin-bottom:10px;
+}
+
+#datepicker{
+	width:40%;
+	height:50px;
+	margin-left:auto;
+	margin-right:auto;
+}
+
+.datediv{
+	text-align:center;
+}
+
+input[type=number]::-webkit-inner-spin-button, 
+input[type=number]::-webkit-outer-spin-button { 
+  -webkit-appearance: none; 
+  margin: 0; 
+}
+
+#adult{
+	text-align:center;
+}
+
+.header-text {
+    position: absolute;
+    top: 20%;
+    left: 1.8%;
+    right: auto;
+    width: 96.66666666666666%;
+    color: #fff;
+}
+
+.header-text h2 {
+    font-size: 40px;
+}
+
+.header-text h2 span {
+	padding: 10px;
+}
+
+.header-text h3 span {
+	padding: 15px;
+}

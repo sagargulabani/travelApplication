@@ -1,0 +1,48 @@
+extends layout
+
+block scripts
+	script(src="/javascripts/search.js")
+	link(rel='stylesheet', href='/stylesheets/search.css')
+block content
+	if datas.length == 0
+		-for(var i = 0;i<8;i++){
+		br
+		-}
+		h1.text-center(style = 'font-size:40px') 
+			| #{searchData.transport} from #{searchData.depcity} to #{searchData.arrcity}
+	else
+		h1.text-center #{searchData.transport} from #{searchData.depcity} to #{searchData.arrcity}
+		
+	if datas.length != 0
+		-for(var i = 0;i<4;i++){
+		br
+		-}
+		include table.jade
+	else
+		p.text-center(style = 'color:red;font-size:30px') 
+			| We are sorry !!!!
+			br
+			| no #{searchData.transport} available for the date
+			br
+			a(href = '/') Click Here
+			|  to search again
+	
+	if searchData.roundTrip	
+		-for(var i = 0;i<3;i++){
+		br
+		-}
+		h1.text-center(style = 'font-size:40px') 
+			| #{searchData.transport} from #{searchData.arrcity} to #{searchData.depcity}
+		if datasReturn.length == 0
+			p.text-center(style = 'color:red;font-size:30px') 
+				| We are sorry !!!!
+				br
+				| no #{searchData.transport} available for the date
+				br
+				a(href = '/') Click Here
+				|  to search again
+		else
+			-for(var i = 0;i<3;i++){
+			br
+			-}
+			include returnTable.jade

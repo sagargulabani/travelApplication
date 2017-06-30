@@ -1,0 +1,26 @@
+table
+	tr(style = 'text-align:center')
+		th Unique Id
+		th Dep Date
+		th Dep Time
+		th Arrival Date
+		th Arrival Time
+		th Price
+		if(user)
+			th Book		
+	for data in datasReturn
+		tr
+			td #{data.id}
+			td #{data.depdate}
+			td #{data.deptime}
+			td #{data.arrdate}
+			td #{data.arrtime}
+			td #{data.price}
+			if(user)
+				td 
+					form(method = 'POST' action = '/book')
+						input(type = 'text' name = 'uniqueid' value = '#{data.id}' hidden)
+						input(type = 'text' name = 'transport' value = '#{searchData.transport}' hidden)
+						input(type = 'text' name = 'travelClass' value = '#{searchData.travelClass}' hidden)
+						input(type = 'text' name = 'passCount' value = '#{searchData.passCount}' hidden)
+						button.btn.btn-primary.btn-lg(name = 'submit' type = 'submit') Book					

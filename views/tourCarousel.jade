@@ -1,0 +1,64 @@
+#myCarousel.carousel.slide.row(data-ride='carousel' style = 'max-height:600px;overflow:hidden')
+	ol.carousel-indicators
+		
+		li.active(data-target='#myCarousel', data-slide-to='0')
+		- for (var i = 1; i < tours.length; i++) {
+			li(data-target='#myCarousel', data-slide-to='i')
+		- }
+	
+		
+	.carousel-inner(role='listbox')
+		.item.active
+			img(src='/images/#{tours[0].location}.jpg')
+			.header-text.hidden-xs
+				.col-md-12.text-center
+					h2
+						span
+							| #{tours[0].location}
+					br
+					h3
+						| starting at Rs #{tours[0].price}
+						br
+						br
+						| #{tours[0].days} days/ #{tours[0].nights} Nights
+					
+					br
+					
+					
+						
+		
+		- for(var i = 1; i < tours.length;i++){
+			.item
+				img(src='/images/#{tours[i].location}.jpg')
+				.header-text.hidden-xs
+					.col-md-12.text-center
+						h2
+							span
+								| #{tours[i].location}
+						br
+						h3
+							| starting at Rs #{tours[i].price}
+							br
+							br
+							| #{tours[i].days} days/ #{tours[i].nights} Nights
+						br
+						
+						
+						
+		- }
+		
+				
+
+		
+		
+	a.left.carousel-control(href='#myCarousel', role='button', data-slide='prev')
+		span.glyphicon.glyphicon-chevron-left(aria-hidden='true')
+		span.sr-only Previous
+	a.right.carousel-control(href='#myCarousel', role='button', data-slide='next')
+		span.glyphicon.glyphicon-chevron-right(aria-hidden='true')
+		span.sr-only Next
+
+br
+br
+br
+br

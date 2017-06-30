@@ -1,0 +1,35 @@
+extends layout
+
+block scripts
+	script(src="/javascripts/booking.js")
+	link(rel='stylesheet', href='/stylesheets/booking.css')
+block content
+	-var a = trainBookings.length + flightBookings.length + trainBookings.length 
+	if a == 0
+		-for(var i = 0;i<8;i++){
+		br
+		-}
+		h1.text-center(style = 'font-size:40px') 
+			| You have no bookings
+	else
+		h1.text-center Bookings
+		
+		if flightBookings.length != 0
+			-for(var i = 0;i<2;i++){
+			br
+			-}
+			h2 Flights
+			include FlightBookingTable.jade
+		if trainBookings.length != 0
+			-for(var i = 0;i<2;i++){
+			br
+			-}
+			h2 Trains
+			include trainBookingTable.jade
+		if busBookings.length != 0
+			-for(var i = 0;i<2;i++){
+			br
+			-}
+			h2 Buses
+			include busBookingTable.jade	
+	

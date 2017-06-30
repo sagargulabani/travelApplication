@@ -1,0 +1,53 @@
+extends layout
+
+block scripts
+	script(src="/javascripts/index.js")
+	link(rel='stylesheet', href='/stylesheets/index.css')
+	link(rel='stylesheet', href='/stylesheets/bootstrap-datepicker3.min.css')
+	script(src='/javascripts/bootstrap-datepicker.min.js')
+block content
+	div(class = 'container-fluid' id = 'selection')
+		ul(class = 'nav nav-tabs nav-justified')
+			li(class = 'active')
+				a(data-toggle = 'tab' href = '#flights') Flights
+			li
+				a(data-toggle = 'tab' href = '#trains') Trains
+			li
+				a(data-toggle = 'tab' href = '#buses') Buses
+	
+		div(class = 'tab-content')
+			include flightBooking.jade
+			include trainBooking.jade
+			include busBooking.jade
+	
+		include tourCarousel.jade
+		
+		
+		.container-fluid.bg-grey
+			h2.text-center CONTACT
+			.row
+				.col-sm-5
+					p Contact us and we'll get back to you within 24 hours.
+					p
+						span.glyphicon.glyphicon-map-marker
+						|  Ahmedabad, Gujarat
+					p
+						span.glyphicon.glyphicon-phone
+						|  +91 9913870186
+					p
+						span.glyphicon.glyphicon-envelope
+						|  13bce096@nirmauni.ac.in
+				form(method = 'GET' action = '/feedback')
+					.col-sm-7
+						.row
+							.col-sm-6.form-group
+								input#name.form-control(name='name', placeholder='Name', type='text', required='')
+							.col-sm-6.form-group
+								input#email.form-control(name='email', placeholder='Email', type='email', required='')
+						textarea#comments.form-control(name='comment', placeholder='Comment', rows='5')
+						br
+						.row
+							.col-sm-12.form-group
+								button.btn.btn-default.pull-right(type='submit' name = 'submit') Send
+
+		
